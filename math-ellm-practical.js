@@ -11,7 +11,7 @@ async function loadMathStackQA(path) {
   
   // In a real implementation, we would use appropriate libraries to load the dataset
   // For this demo, we'll simulate loading with sample data
-  const sampleSize = 500000; // Number of entries to process in this demo
+  const sampleSize = 951820; // Number of entries to process in this demo
   
   const mathStackQA = {
     metadata: {
@@ -537,7 +537,7 @@ async function runMathStackELLMDemo() {
   
   // Test questions
   const testQuestions = [
-    "What is the integral of the formula for the area of a circle with respect to x"
+    "What is the integral of the formula for the area of a circle with respect to x",
     "What is the derivative of x^3?",
     "How do I solve the quadratic equation ax^2 + bx + c = 0?",
     "Find the integral of sin(x) with respect to x.",
