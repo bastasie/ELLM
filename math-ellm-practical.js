@@ -539,7 +539,7 @@ async function runMathStackELLMDemo() {
   const testQuestions = [
     "What is the integral of the formula for the area of a circle with respect to x",
     "What is the derivative of x^3?",
-    "How do I solve the quadratic equation ax^2 + bx + c = 0?",
+    "How do I solve the quadratic equation ax^2 + by^2 + c = 0?",
     "Find the integral of sin(x) with respect to x.",
     "What is the integral of the formula for the area of a circle with respect to x?",
     "How do I calculate the limit of (1-cos(x))/x^2 as x approaches 0?"
