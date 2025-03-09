@@ -1,0 +1,102 @@
+// Math-ELLM Demo with MathStack-QA Dataset
+// This script demonstrates how to use the Math-ELLM with real data
+
+/**
+ * Mock function to simulate loading data from the MathStack-QA dataset
+ * In a real implementation, this would use appropriate library to load from Hugging Face
+ */
+async function loadRealMathStackQA() {
+  console.log("Loading sample from MathStack-QA dataset...");
+  
+  // This is a small sample from the real dataset
+  const sampleData = [
+    {
+      qid: 1,
+      question: "How do you find the derivative of f(x) = x^2?",
+      answer: "To find the derivative of $f(x) = x^2$, we use the power rule: $\\frac{d}{dx}[x^n] = nx^{n-1}$.\n\nWith $n = 2$, we get $f'(x) = 2x^{2-1} = 2x^1 = 2x$.\n\nTherefore, the derivative of $f(x) = x^2$ is $f'(x) = 2x$."
+    },
+    {
+      qid: 2,
+      question: "What's the quadratic formula?",
+      answer: "The quadratic formula is used to solve quadratic equations of the form $ax^2 + bx + c = 0$, where $a \\neq 0$.\n\nThe formula is: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\n\nThis gives us the two solutions to the quadratic equation."
+    },
+    {
+      qid: 3,
+      question: "How do you integrate sin(x)?",
+      answer: "To integrate $\\sin(x)$, we need to find $\\int \\sin(x) \\, dx$.\n\nThe indefinite integral of $\\sin(x)$ is $-\\cos(x) + C$, where $C$ is the constant of integration.\n\nIn other words, $\\int \\sin(x) \\, dx = -\\cos(x) + C$."
+    },
+    {
+      qid: 4,
+      question: "What's the formula for the area of a circle?",
+      answer: "The formula for the area of a circle is $A = \\pi r^2$, where $r$ is the radius of the circle and $\\pi$ is the mathematical constant approximately equal to 3.14159."
+    },
+    {
+      qid: 5,
+      question: "How do you solve a system of linear equations using matrices?",
+      answer: "To solve a system of linear equations using matrices, we can use the following steps:\n\n1. Write the system in matrix form $AX = B$, where $A$ is the coefficient matrix, $X$ is the variable matrix, and $B$ is the constant matrix.\n\n2. Find the inverse of the coefficient matrix, $A^{-1}$.\n\n3. Multiply both sides by $A^{-1}$ to get $A^{-1}AX = A^{-1}B$.\n\n4. Since $A^{-1}A = I$ (the identity matrix), we have $X = A^{-1}B$.\n\nAlternatively, you can use Gaussian elimination or Cramer's rule."
+    },
+    {
+      qid: 6,
+      question: "What is the chain rule in calculus?",
+      answer: "The chain rule is a formula for calculating the derivative of a composite function.\n\nIf $y = f(g(x))$, then $\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$, where $u = g(x)$.\n\nIn Leibniz notation, this is expressed as: $\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)$.\n\nFor example, if $y = \\sin(x^2)$, then $\\frac{dy}{dx} = \\cos(x^2) \\cdot 2x$."
+    },
+    {
+      qid: 7,
+      question: "Explain L'Hôpital's rule.",
+      answer: "L'Hôpital's rule is used to evaluate limits of indeterminate forms such as $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$.\n\nThe rule states that if $\\lim_{x \\to a} \\frac{f(x)}{g(x)}$ gives an indeterminate form, then $\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$, provided the latter limit exists.\n\nIn other words, you can replace the functions in both numerator and denominator with their derivatives."
+    },
+    {
+      qid: 8,
+      question: "What is the binomial theorem?",
+      answer: "The binomial theorem gives the expansion of a binomial raised to a positive integer power.\n\nFor any positive integer $n$, we have:\n\n$(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k$\n\nwhere $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$ is the binomial coefficient.\n\nFor example, $(a + b)^2 = a^2 + 2ab + b^2$."
+    },
+    {
+      qid: 9,
+      question: "How do you find the limit of (sin(x))/x as x approaches 0?",
+      answer: "The limit of $\\frac{\\sin(x)}{x}$ as $x$ approaches 0 is 1.\n\nThis limit is of the indeterminate form $\\frac{0}{0}$ since both $\\sin(0) = 0$ and $x = 0$ at the limit point.\n\nOne way to evaluate this limit is to use L'Hôpital's rule, but we can also use the Taylor series expansion of $\\sin(x)$ around $x = 0$:\n\n$\\sin(x) = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\ldots$\n\nDividing by $x$, we get:\n\n$\\frac{\\sin(x)}{x} = 1 - \\frac{x^2}{3!} + \\frac{x^4}{5!} - \\ldots$\n\nAs $x$ approaches 0, all terms except the first term approach 0, so the limit is 1."
+    },
+    {
+      qid: 10,
+      question: "What is the difference between divergence and curl in vector calculus?",
+      answer: "In vector calculus, divergence and curl are two important operations on vector fields:\n\n1. **Divergence**: The divergence of a vector field $\\vec{F} = (F_1, F_2, F_3)$ is a scalar field given by:\n   $\\text{div}(\\vec{F}) = \\nabla \\cdot \\vec{F} = \\frac{\\partial F_1}{\\partial x} + \\frac{\\partial F_2}{\\partial y} + \\frac{\\partial F_3}{\\partial z}$\n   \n   Physically, the divergence measures the rate at which \u201cdensity\u201d exits a given region of space. It tells us whether a point is a source (positive divergence) or a sink (negative divergence).\n\n2. **Curl**: The curl of a vector field $\\vec{F} = (F_1, F_2, F_3)$ is another vector field given by:\n   $\\text{curl}(\\vec{F}) = \\nabla \\times \\vec{F} = \\left(\\frac{\\partial F_3}{\\partial y} - \\frac{\\partial F_2}{\\partial z}, \\frac{\\partial F_1}{\\partial z} - \\frac{\\partial F_3}{\\partial x}, \\frac{\\partial F_2}{\\partial x} - \\frac{\\partial F_1}{\\partial y}\\right)$\n   \n   Physically, the curl measures the tendency of the vector field to rotate around a point. It represents the rotation of a vector field."
+    }
+  ];
+  
+  return {
+    metadata: {
+      totalSize: 951820,
+      processedSize: sampleData.length,
+      features: ['qid', 'question', 'author', 'author_id', 'answer']
+    },
+    data: sampleData
+  };
+}
+
+/**
+ * Main demo function to showcase Math-ELLM capabilities
+ */
+async function runMathELLMDemo() {
+  console.log("=======================================");
+  console.log("Math-ELLM Prime Encoding Demonstration");
+  console.log("=======================================\n");
+  
+  console.log("This demonstration shows how the Math-ELLM system can efficiently");
+  console.log("process mathematical questions and provide equation-based answers");
+  console.log("using prime encoding techniques for efficient computation.\n");
+  
+  // Load dataset
+  console.log("[Step 1] Loading Mathematical Knowledge Base");
+  const mathStackQA = await loadRealMathStackQA();
+  console.log(`Loaded ${mathStackQA.data.length} sample entries from MathStack-QA`);
+  console.log("In a real deployment, this would load all 950,000+ entries\n");
+  
+  // Create and initialize Math-ELLM
+  console.log("[Step 2] Initializing Math-ELLM System");
+  const startTime = Date.now();
+  const mathEllm = new MathStackELLM();
+  await mathEllm.processDataset(mathStackQA);
+  const totalInitTime = (Date.now() - startTime) / 1000;
+  console.log(`Math-ELLM initialized in ${totalInitTime.toFixed(2)} seconds\n`);
+  
+  // Performance metrics
+  console
