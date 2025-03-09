@@ -11,7 +11,7 @@ async function loadMathStackQA(path) {
   
   // In a real implementation, we would use appropriate libraries to load the dataset
   // For this demo, we'll simulate loading with sample data
-  const sampleSize = 5000; // Number of entries to process in this demo
+  const sampleSize = 50000; // Number of entries to process in this demo
   
   const mathStackQA = {
     metadata: {
