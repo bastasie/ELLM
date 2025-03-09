@@ -777,4 +777,4 @@ function runELLMDemo() {
 }
 
 // Uncomment to run the demo
-// runELLMDemo();
+runELLMDemo();
